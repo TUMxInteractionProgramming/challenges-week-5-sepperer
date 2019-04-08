@@ -21,7 +21,7 @@ body {
     background-color: #F5F5F5;
 }
 
-button, strong {
+/* #9 #fix button, */strong {
     text-transform: uppercase;
 }
 
@@ -33,6 +33,9 @@ button, strong {
     width: 40%;
 
     background-color: #3F51B5; /* temporary background color to see the effect, is completely hidden now */
+
+    /* #9 #idx fix shadows */
+    z-index:2;
 }
 
 #chat {
@@ -67,6 +70,9 @@ h1 {
 
     /* MOOCUS image alignment */
     position: relative; /* we need this, so that the image's absolute position is relative to the app bar */
+
+    /* #9 #idx fix shadows */
+    z-index:1;
 }
 
 h1#left-app-bar {
@@ -83,12 +89,15 @@ h1 a {
     color: white;
 }
 
-h1 i {
+h1 button {
     /* #7 #icns #str  */
     position:absolute;
     right: 16px;
     /* #7 #icns #small adjust icon size */
-    font-size:24px;
+    font-size: 24px;
+    /* #9 #str align*/
+    top: 6px;
+    right: 0px;
 }
 
 /* CHANNELS LIST */
@@ -149,6 +158,21 @@ li.selected {
     border-left: 4px solid #3F51B5;
 }
 
+/* #9 #flt floating action button to add channel */
+#new-channel {
+    /* #9 FAB container regular default size 56x56dp */
+    width: 56px;
+    min-width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    font-size: 24px;
+    position: absolute;
+    bottom: 88px;
+    right: 16px;
+}
+
+
+
 /* TAB BAR */
 
 #tab-bar, #chat-bar {
@@ -158,15 +182,21 @@ li.selected {
     bottom: 0;
     width: 100%;
     display: flex;
+
+    /* #9 #btns #fix */
+    height: 72px;
 }
 
-#tab-bar button, #chat-bar button {
-    background-color: white;
-    border: none;
-    font-size: 13px;
+#tab-bar button {
+    /* #9 #btns #fix background-color: white;*/
+    /* #9 #btns #fix border: none;*/
+    /* #9 #btns #fix font-size: 13px;*/
     width: 33%;
     height: 72px;
-    padding: 16px;
+    /* #9 #btns #fix padding: 16px;*/
+
+    /* #9 #btns #fix */
+    margin: 0;
 
     /* flexify the buttons by growing them equally */
     flex-grow: 1;
@@ -186,6 +216,12 @@ li.selected {
 
 /* CHAT BAR */
 
+#chat-bar {
+    /* #9 #flex chat bar*/
+    justify-content: space-between;
+    align-items: center;
+}
+
 #chat-bar button {
     /* override button styles. We set the chat bar to appear like a tab-bar above. This overrides the tab bar's button scaling */
     width: auto;
@@ -199,7 +235,7 @@ li.selected {
     /* emoji menu */
     /* colors and borders */
     background-color:white;
-    border: 1px solid black;
+    /* #9 #shdw remove border border: 1px solid black; */
 
     /* size & alignment */
     position: absolute;
@@ -235,8 +271,9 @@ li.selected {
 .message {
     width: 80%;
     margin-bottom: 8px;
-    margin-left: 2.5%;
+    /* #9 #mrg recalculate margin*/
     position: relative;
+    margin-left: 20px;
 }
 
 .message h3 {
@@ -268,20 +305,131 @@ li.selected {
 .message p {
     background-color: white;
     padding: 16px;
+
+    /* #9 #msgs drop shadow */
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+
+    position: relative;
+}
+
+/*#9 #psd add a red box before message*/
+.message p:before{
+    content: "";
+    width: 0px;
+    height: 0px;
+    /* background-color: red; */
+    position: absolute;
+    top: 0px;
+    left: -20px;
+
+    /*#9 #tri trangle left */
+    border-right: 20px solid white;
+    border-bottom: 20px solid transparent;
+
+    /* #9 #ash shadow for angular*/
+    filter: drop-shadow(-1px 1px 1px rgba(0, 0, 0, 0.1));
+}
+
+.message.own p:before {
+    /*#9 #own trangle right */
+    left: 100%;
+    border-right: none;
+    border-left: 20px solid white;
+    border-bottom: 20px solid transparent;
+
+    /* #9 #ash shadow for angular*/
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.1));
 }
 
 .message button {
     /* +5 min. button*/
-    background-color: #CDDC39;
+    /* #8 #fix background-color: #CDDC39;
     color: black;
-    text-transform: uppercase;
+    text-transform: uppercase; */
 
     /* right/bottom alignment of button */
     position: absolute;
-    right: 8px;
-    bottom: 8px;
+    right: 0px;
+    bottom: 0px;
 }
 
 .message.own {
-    margin-left: 17.5%;
+     /* #9 #mrg recalculate margin*/
+    margin-left: calc(20% - 20px);
 }
+
+
+button {
+    /* #9 #btns #all general settings for all buttons*/
+        height: 36px;
+        min-width: 64px;
+        font-size: 14px;
+        border-radius: 2px;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+        margin: 8px;
+        background-color: white;
+        border: none;
+        color:black;
+        text-transform: uppercase;
+}
+
+/* #9 #clss define css rules for reuse*/
+button.primary{
+    background-color:  #3F51B5;
+    color: white;
+}
+
+/* #9 #clss define css rules for reuse*/
+button.accent{
+    background-color: #CDDC39;
+    color: black;
+}
+
+/* #9 #hvr hovered and pressed button darker*/
+button:hover, button:active{
+    background-color: #D9D9D9;
+}
+button.primary:hover, button.primary:active{
+    background-color: #192B8F
+} 
+button.accent:hover, button.accent:active{
+    background-color: #A7B613;
+}
+
+/* #9 #fcs remove blue outline*/
+button:focus, input:focus{
+    outline:0;
+}
+
+
+/* #9 #shdw copyy the shadows */
+    .shadow--2dp {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    }
+    
+    .shadow--3dp {
+        box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
+    }
+    
+    .shadow--4dp {
+        box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    }
+    
+    .shadow--6dp {
+        box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+    }
+    
+    .shadow--8dp {
+        box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+    }
+    
+    .shadow--16dp {
+        box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+    }
+    
+    .shadow--24dp {
+        box-shadow: 0 9px 46px 8px rgba(0, 0, 0, 0.14), 0 11px 15px -7px rgba(0, 0, 0, 0.12), 0 24px 38px 3px rgba(0, 0, 0, 0.2);
+    }
