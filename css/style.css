@@ -100,6 +100,37 @@ h1 button {
     right: 0px;
 }
 
+/* #10 #styled style new channel bar*/
+#right-app-bar {
+    display: block;
+}
+
+ /* #10 #styled style new channel bar*/
+#right-app-bar-new {
+    align-items: center;
+    padding-right: 0px;
+    display: none;
+}
+
+ /* #10 #styled style new channel bar*/
+#right-app-bar-new input{
+    font-size: 20px;
+    border: none;
+    border-radius: 4px;
+    flex-grow: 1;
+}
+
+ /* #10 #styled style new channel bar*/
+#right-app-bar-new button{
+    position: relative;
+    font-size: 12px;
+    margin-top: 0px;
+    border: none;
+    text-transform: uppercase;
+    flex-grow: 0;
+}
+
+
 /* CHANNELS LIST */
 
 ul {
@@ -351,6 +382,17 @@ li.selected {
     position: absolute;
     right: 0px;
     bottom: 0px;
+}
+
+/* #10 #styled style new channel bar*/
+    #send-message-button{
+    display: block;
+}
+
+/* #10 #styled style new channel bar*/
+#create-channel-button{
+    text-transform: uppercase;
+    display: none;
 }
 
 .message.own {
