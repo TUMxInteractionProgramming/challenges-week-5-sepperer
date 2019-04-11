@@ -343,6 +343,10 @@ function createChannel()
 
         console.log("New channel: ", currentChannel);
     }
+    else
+    {
+        alert('Channel name not valid (# as first letter, no space) or empty message!');
+    }
 }
 
 /**
